@@ -1,0 +1,81 @@
+@import url(//fonts.googleapis.com/css?family=Rubik:400,300,500)
+@import variables
+@import icons
+
+body
+  background: darken(desaturate($color-primary, 15%), 50%)
+  font-family: 'Rubik'
+  font-size: 14px
+
+  *, *:before
+    box-sizing: border-box
+
+.container-wrap
+  display: block
+  background: $color-white
+  position: relative
+  margin: 2em
+  border-radius: $border-radius
+  overflow: hidden
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15)
+
+  .map-wrap
+    float: left
+    width: 67%
+    z-index: 0
+    position: relative
+
+  .map-search
+    position: absolute
+    bottom: 0
+    width: 100%
+    left: 0
+    background: $color-primary
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15) inset
+
+    input
+      font-size: 2em
+      display: block
+      width: calc(100% - 2em)
+      margin: 1em
+      border-radius: $border-radius
+      border: 1px solid darken($color-primary, 15%)
+      padding: 0.5em 2.75em 0.5em 0.75em
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15)
+      color: $color-primary
+      font-family: 'Rubik'
+
+    .icon
+      position: absolute
+      right: 1.25em
+      top: 1.1em
+      color: $color-primary-dark
+      font-size: 2.67em
+
+  .social-wrap
+    height: 100%
+    width: 33%
+    position: absolute
+    right: 0
+    top: 0
+    z-index: 1
+    box-shadow: -1px 0 3px rgba(0,0,0,0.15)
+    background: url(/images/cream_pixels.png)
+
+    > div
+      position: absolute
+      width: 100%
+      height: 50%
+      text-align: center
+
+      img
+        display: block
+        margin: 0 auto
+        width: 75%
+        margin-top: 2em
+
+    .social-top
+      top: 0
+
+    .social-bottom
+      bottom: 0
