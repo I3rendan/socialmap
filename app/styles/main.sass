@@ -1,81 +1,284 @@
-@import url(//fonts.googleapis.com/css?family=Rubik:400,300,500)
+@import fonts
 @import variables
 @import icons
+@import compass
+
+html
+  height: 100%
 
 body
-  background: darken(desaturate($color-primary, 15%), 50%)
-  font-family: 'Rubik'
+  background: $color-white
+  font-family: 'connectionsregular'
   font-size: 14px
+  margin: 0
+  padding: 0
 
   *, *:before
     box-sizing: border-box
 
+h1, h2, h3, h4, h5
+  font-weight: normal
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.08)
+
 .container-wrap
   display: block
-  background: $color-white
-  position: relative
-  margin: 2em
-  border-radius: $border-radius
+  background: $color-lightest
+  position: absolute
+  width: 100%
+  height: 100%
   overflow: hidden
   box-shadow: 0 2px 4px rgba(0,0,0,0.15)
 
-  .map-wrap
-    float: left
-    width: 67%
-    z-index: 0
-    position: relative
+.map-wrap
+  float: left
+  width: 72.5%
+  z-index: 0
+  position: relative
+  background: $color-lightest
 
-  .map-search
+  > h1
+    margin: 0
+    padding: 0.33em 0.5em 0.33em 0.75em
+    background: fade-out($color-primary, 0.1)
+    color: $color-white
+    position: absolute
+    z-index: 2
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15)
+
+    &:after
+      content: ""
+      position: absolute
+      left: calc(100% - 0.33em)
+      top: 0
+      border-top: 0.975em solid fade-out($color-primary, 0.1)
+      border-right: 0.975em solid transparent
+      border-bottom: 0.975em solid transparent
+      border-left: 0.975em solid fade-out($color-primary, 0.1)
+      transform: scaleX(0.67)
+
+  > h2
     position: absolute
     bottom: 0
-    width: 100%
-    left: 0
-    background: $color-primary
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15) inset
+    right: 0
+    background: fade-out($color-secondary, 0.1)
+    color: $color-white
+    margin: 0
+    padding: 0.33em 0.75em 0.33em 0.5em
+    z-index: 2
+    box-shadow: 0 -1px 2px rgba(0,0,0,0.15)
 
-    input
-      font-size: 2em
-      display: block
-      width: calc(100% - 2em)
-      margin: 1em
-      border-radius: $border-radius
-      border: 1px solid darken($color-primary, 15%)
-      padding: 0.5em 2.75em 0.5em 0.75em
-      box-shadow: 0 2px 4px rgba(0,0,0,0.15)
-      color: $color-primary
-      font-family: 'Rubik'
-
-    .icon
+    &:after
+      content: ""
       position: absolute
-      right: 1.25em
-      top: 1.1em
-      color: $color-primary-dark
-      font-size: 2.67em
+      right: calc(100% - 0.4em)
+      top: 0
+      border-top: 1.15em solid transparent
+      border-right: 1.15em solid fade-out($color-secondary, 0.1)
+      border-bottom: 1.15em solid fade-out($color-secondary, 0.1)
+      border-left: 1.15em solid transparent
+      transform: scaleX(0.67)
 
-  .social-wrap
-    height: 100%
-    width: 33%
+  svg
+    margin-top: 3em
+    margin-bottom: -10em
+
+  .map-pin
     position: absolute
+    height: 1em
+    width: 1em
+    left: 0
     right: 0
     top: 0
-    z-index: 1
-    box-shadow: -1px 0 3px rgba(0,0,0,0.15)
-    background: url(/images/cream_pixels.png)
+    bottom: 0
+    font-size: 4em
+    margin: auto
 
-    > div
+    &:after
       position: absolute
+      top: 100%
+      background: rgba(0,0,0,0.33)
+      height: 0.25em
+      width: 0.67em
+      border-radius: 50%
+      top: 0.8em
+      left: 0.175em
+      content: ""
+      z-index: 0
+      filter: blur(1px)
+
+    .icon
+      color: $color-pin
+      position: relative
+      z-index: 1
+
+.map-search
+  position: absolute
+  bottom: 0
+  width: 100%
+  left: 0
+  background: $color-primary
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15) inset
+
+  input
+    font-size: 2em
+    display: block
+    width: calc(100% - 2em)
+    margin: 1em
+    border-radius: $border-radius
+    border: 1px solid darken($color-primary, 15%)
+    padding: 0.5em 2.75em 0.5em 0.75em
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15)
+    color: $color-primary
+    font-family: 'Rubik'
+
+  .icon
+    position: absolute
+    right: 1.25em
+    top: 1.1em
+    color: $color-primary-dark
+    font-size: 2.67em
+
+.social-wrap
+  height: 100%
+  width: 27.5%
+  position: absolute
+  right: 0
+  top: 0
+  z-index: 1
+  box-shadow: -2px 0 4px rgba(0,0,0,0.25)
+  //background: url(/images/cream_pixels.png)
+  background: $color-white
+
+.social-outer
+  top: 0
+  height: 67%
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15)
+  overflow: auto
+  position: relative
+
+  &:after
+    content: ""
+    position: absolute
+    left: 0
+    top: 0
+    height: 100%
+    width: 100%
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0) 80%, rgba(255,255,255,1) 95%)
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(80%,rgba(255,255,255,0)), color-stop(95%,rgba(255,255,255,1)))
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 80%,rgba(255,255,255,1) 95%)
+    background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 80%,rgba(255,255,255,1) 95%)
+    background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 80%,rgba(255,255,255,1) 95%)
+    background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 80%,rgba(255,255,255,1) 95%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 )
+    z-index: 2
+
+  .social-item
+    width: 100%
+    color: $color-dark * 3
+    opacity: 1
+    position: relative
+    display: block
+    text-align: left
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15)
+
+    &.social-twitter
+      .social-name > p
+        color: $color-twitter
+
+        >span
+          display: block
+
+        > span:before
+          content: "@"
+
+      .social-icon
+        color: $color-twitter
+
+    &.social-facebook
+      .social-name > p
+        color: $color-facebook
+
+      .social-icon
+        color: $color-facebook
+
+    &.social-instagram
+      .social-name > p
+        color: $color-instagram
+
+      .social-icon
+        color: $color-instagram
+
+    &.social-custom
+      .social-name > p
+        color: $color-primary
+
+      .social-icon
+        color: $color-primary
+
+  .social-inner
+    display: inline-block
+    padding: 1.5em
+    margin: 0.25em 0
+    width: 100%
+    font-size: 0.925em
+
+  .social-img
+    width: 3em
+    float: left
+    vertical-align: top
+
+    img
       width: 100%
-      height: 50%
-      text-align: center
+      border-radius: $border-radius
+      overflow: hidden
+      box-shadow: 0 1px 2px rgba(0,0,0,0.15)
 
-      img
-        display: block
-        margin: 0 auto
-        width: 75%
-        margin-top: 2em
+  .social-name
+    float: left
+    width: calc(100% - 3em)
+    position: relative
+    z-index: 1
 
-    .social-top
-      top: 0
+    > p
+      display: inline-block
+      width: calc(100% - 1em)
+      font-size: 1.05em
+      margin: 0.33em 0 0.425em 1em
+      line-height: 1.33
 
-    .social-bottom
-      bottom: 0
+      > span
+        color: $color-dark * 3
+        font-size: 0.925em
+        display: none
+
+  .social-post
+    float: left
+    width: 100%
+    //margin: 0.75em 0 0.33em
+
+    > p
+      font-size: 1.05em
+      line-height: 1.25
+
+  .social-icon
+    position: absolute
+    right: 0.33em
+    top: 0.33em
+    font-size: 1.75em
+    color: darken($color-primary-dark, 12.5%)
+    z-index: 0
+    text-shadow: 0 1px 0 fade-out($color-white, 0.925)
+
+.social-bottom
+  bottom: 0
+  height: 33%
+  background: $color-lighter
+
+  > img
+    width: 100%
+  
+  .google-chart
+    display: inline-block
+    margin-top: -1.5em
+    margin-left: 1em
+
