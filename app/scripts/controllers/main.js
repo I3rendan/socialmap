@@ -187,7 +187,12 @@ angular.module('socialmapApp')
       'backgroundColor': 'transparent',
       'height': '100%',
       'width': '100%',
-      'colors': ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6']
+      'colors': ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'],
+      'animation':{
+        'duration': 1500,
+        'easing': 'inAndOut',
+        'startup': true
+      }
     };
 
   });

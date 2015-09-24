@@ -1,0 +1,27 @@
+// Keyframes mixin
+=keyframes($name)
+  @-webkit-keyframes #{$name}
+    @content
+  @-moz-keyframes #{$name}
+    @content
+  @-ms-keyframes #{$name}
+    @content
+  @keyframes #{$name}
+    @content
+
++keyframes(map-zoomIn)
+  0%
+    transform: scale(1,1)
+    -webkit-transform: scale(1,1)
+    -moz-transform: scale(1,1)
+
+  50%
+    opacity: 1
+    transform: scale(4,4)
+    -webkit-transform: scale(4,4)
+    -moz-transform: scale(4,4)
+
+  100%
+    transform: scale(1,1)
+    -webkit-transform: scale(1,1)
+    -moz-transform: scale(1,1)

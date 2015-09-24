@@ -1,7 +1,7 @@
 @import fonts
 @import variables
 @import icons
-@import compass
+@import animations
 
 html
   height: 100%
@@ -81,6 +81,9 @@ h1, h2, h3, h4, h5
   svg
     margin-top: 3em
     margin-bottom: -10em
+    animation: map-zoomIn $animate-speed infinite
+    -webkit-animation: map-zoomIn $animate-speed infinite
+    -moz-animation: map-zoomIn $animate-speed infinite
 
   .map-pin
     position: absolute
@@ -279,6 +282,6 @@ h1, h2, h3, h4, h5
   
   .google-chart
     display: inline-block
-    margin-top: -1.5em
-    margin-left: 1em
+    margin-top: -1.67em
+    margin-left: 0.75em
 
