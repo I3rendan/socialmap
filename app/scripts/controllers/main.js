@@ -147,7 +147,7 @@ angular.module('socialmapApp')
 
     $scope.mapDataHumanizeFn = function(val) { return val + ' people'; };
 
-    $scope.heatmapColors = ['#6a4b27','#b67918','#fff18e'];
+    $scope.heatmapColors = ['#857363','#d1c9c0','#f9f8f5'];
 
     // Google Charts
 
