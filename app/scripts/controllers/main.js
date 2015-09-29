@@ -127,9 +127,7 @@ angular.module('socialmapApp')
     $scope.data = {
       'GB': {metric: 4},
       'US': {metric: 25},
-      'CA': {metric: 5},
-      'BR': {metric: 75},
-      'RU': {metric: 33},
+      'BR': {metric: 100},
       'AR': {metric: 5},
       'CN': {metric: 85},
       'DE': {metric: 13},
@@ -141,7 +139,6 @@ angular.module('socialmapApp')
       'FR': {metric: 29},
       'IN': {metric: 50},
       'FI': {metric: 15},
-      'AU': {metric: 100}
     };
 
     // Map Stuff
@@ -150,7 +147,7 @@ angular.module('socialmapApp')
 
     $scope.mapDataHumanizeFn = function(val) { return val + ' people'; };
 
-    $scope.heatmapColors = ['#0073cf','#e31837'];
+    $scope.heatmapColors = ['#6a4b27','#b67918','#fff18e'];
 
     // Google Charts
 
