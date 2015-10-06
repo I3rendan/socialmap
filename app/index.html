@@ -23,7 +23,65 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+    <div class="container-wrap" ng-controller="MainCtrl">
+      <div class="map-wrap">
+        <h1>Together, let's light up the world</h1>
+        <h2>Life's better when we're connected</h2>
+
+        <div id="map-container">
+
+          <div id="map-regions"></div>
+          <div id="map-regions2"></div>
+          
+        </div>
+        
+        <div class="map-pin">
+          <i class="icon icon-location-pin"></i>
+          <div class="map-pin-count">
+            <p>36</p>
+          </div>
+        </div>
+      </div>
+      <div class="social-wrap">
+
+        <!-- <div class="social-outer" ng-init="loadPosts()"> -->
+
+        <div class="social-outer">
+
+          <div id="social{{$index}}" 
+            class="social-item social-{{feedPost.site}}"  
+            ng-repeat="feedPost in feedPosts" social-item>
+            <div class="social-inner">
+              <div class="social-img">
+                <img ng-src="{{feedPost.avatar_url}}">
+              </div>
+              <div class="social-name">
+                <p>
+                  {{feedPost.screen_name}}
+                  <span>{{feedPost.name}}</span>
+                </p>
+              </div>
+              <div class="social-post">
+                <p>{{feedPost.title}}</p>
+              </div>
+              <div class="social-icon">
+                <i class="icon icon-{{feedPost.site}}"></i>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="social-bottom">
+
+          <!--  <img src="images/boa.gif"> -->
+          <img src="images/boa-2.jpg">
+          <!-- <div class="google-chart" google-chart chart="chartObject"></div> -->
+
+        </div>
+
+      </div>
+    </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -63,14 +121,11 @@
     <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js"></script>
     <!-- endbower -->
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
-    <script src="scripts/datamaps.all.min.js"></script>
-
     <script src="bower_components/angular-mappy/build/angular-mappy.js"></script>
     <link rel="stylesheet" href="bower_components/angular-mappy/build/angular-mappy.css"/>
     <script src="bower_components/angular-mappy/_mapdata.js"></script>
     <script src="bower_components/angular-google-chart/ng-google-chart.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
 
     <!-- endbuild -->
 
@@ -78,5 +133,164 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <!-- endbuild -->
+
+    <script type="text/javascript" src="scripts/jsapi.js"></script>
+    <script type="text/javascript">
+
+        var currData = [];
+        var prevData = [];
+
+        var options = {
+            backgroundColor: 'transparent',
+            datalessRegionColor: '#d1c9c0',
+            colorAxis: {
+                colors: ['#83c6fb','#3153d9','#011669'],
+                minValue: 0,
+                maxValue: 100
+            },
+            sizeAxis: {minValue: 0, maxValue: 100},
+            legend: 'none'
+        };
+
+        var optionsUS = {
+            region: 'US',
+            resolution: 'provinces',
+            backgroundColor: 'transparent',
+            datalessRegionColor: '#d1c9c0',
+            colorAxis: {colors: ['#83c6fb','#3153d9','#011669']},
+            legend: 'none'
+        }
+
+        var data;
+        var chart;
+        var mapTimeout;
+        var init = true;
+        var partyOn = false;
+        var animateSpeed = 500;
+        var timeoutSpeed = 3000;
+
+        function drawRegionsMap(){
+            regionArray = [['Country','Total']];
+            data = google.visualization.arrayToDataTable(regionArray);
+            chart = new google.visualization.GeoChart(document.getElementById('map-regions'));
+            chart.draw(data, options);
+            startMap();
+        }
+
+        function startMap(){
+
+            mapTimeout = setTimeout(drawMapData, timeoutSpeed);
+        }
+
+        function restoreMap(){
+
+          $('#map-regions').delay(timeoutSpeed).animate({
+            opacity: 0
+          }, animateSpeed, function(){
+
+            data = google.visualization.arrayToDataTable(regionArray);
+            chart = new google.visualization.GeoChart(document.getElementById('map-regions'));
+            chart.draw(data, options);
+            animateIn(false);
+            partyOn = false;
+          });
+        }
+
+        function animateIn(isFirst){
+
+          if (isFirst === true){
+            $('#map-regions').addClass('zoomed');
+            $('#map-regions').animate({
+              opacity: 1
+            }, animateSpeed, function(){
+              restoreMap();
+            });
+          } else {
+            $('#map-regions').removeClass('zoomed');
+            $('#map-regions').animate({
+              opacity: 1
+            }, animateSpeed, function(){
+              startMap();
+            });
+          }
+        }
+
+        function animateOut(regions){
+
+          //_.each(regions, function(region){
+
+            $('#map-regions').animate({
+              opacity: 0
+            }, animateSpeed, function(){
+
+              optionsSpec = {
+                  backgroundColor: 'transparent',
+                  datalessRegionColor: '#d1c9c0',
+                  colorAxis: {
+                      colors: ['#83c6fb','#3153d9','#011669'],
+                      minValue: 0,
+                      maxValue: 100
+                  },
+                  sizeAxis: {minValue: 0, maxValue: 100},
+                  legend: 'none',
+                  region: region[0]
+              };
+
+              data = google.visualization.arrayToDataTable(regionArray);
+              chart = new google.visualization.GeoChart(document.getElementById('map-regions'));
+              chart.draw(data, optionsSpec);
+              animateIn(true);
+            });
+
+          //});
+          
+        }
+
+        function drawMapData(){
+            $.ajax({
+                url: '/feeds/mapData.json', 
+                dataType: 'json',
+                cache: false
+            })
+            .success(function(data){
+
+                prevData = currData;
+                currData = data;
+                regionNew = [];
+                regionArray = [['Country','Total']];
+
+                _.each(data, function(item){
+                    _.each(prevData, function(prevItem){
+                        if (prevItem.country === item.country && prevItem.total !== item.total ){
+                            console.log('THIS IS DIFFERENT: ' + item.country);
+                            regionNew.push([item.country,item.total])
+                            partyOn = true;
+                        }
+                    });
+                    regionArray.push([item.country,Number(item.total)]);              
+                });
+
+                if (init === false && partyOn === true){
+                    clearTimeout(mapTimeout);
+                    animateOut(regionNew);
+                } else if (init === false && partyOn === false){
+                    startMap();
+                } else if (init === true){
+                  data = google.visualization.arrayToDataTable(regionArray);
+                  chart = new google.visualization.GeoChart(document.getElementById('map-regions'));
+                  chart.draw(data, options);
+                  init = false;
+                  startMap();
+                }
+            })
+            .error(function(){
+                alert('Error loading JSON');
+                startMap();
+            });
+        }
+
+      google.load('visualization', '1', {packages:['geochart']});
+      google.setOnLoadCallback(drawRegionsMap);
+    </script>
 </body>
 </html>

@@ -2,38 +2,25 @@
   <div class="map-wrap">
     <h1>Together, let's light up the world</h1>
     <h2>Life's better when we're connected</h2>
-    <!-- <mappy data="data" map-data="mapPathData" key="metric" colors="heatmapColors" min="0" max="100" humanize-fn="mapDataHumanizeFn(val)"></mappy> -->
-    <!-- <div class="map-search">
-      <input type="text" placeholder="Enter your state or country" autofocus>
-      <i class="icon icon-magnifying-glass"></i>
-    </div> -->
 
     <div id="map-container">
-      
-      <div id="map-container-usa"></div>
+
+      <div id="map-regions"></div>
       
     </div>
-    <script>
-        var map = new Datamap({
-          element: document.getElementById('map-container')
-        });
-    </script>
-
-    
-    <script>
-        var map2 = new Datamap({
-          element: document.getElementById('map-container-usa'),
-          scope: 'usa'
-        });
-    </script>
     
     <div class="map-pin">
       <i class="icon icon-location-pin"></i>
+      <div class="map-pin-count">
+        <p>36</p>
+      </div>
     </div>
   </div>
   <div class="social-wrap">
 
-    <div class="social-outer" ng-init="loadPosts()">
+    <!-- <div class="social-outer" ng-init="loadPosts()"> -->
+
+    <div class="social-outer">
 
       <div id="social{{$index}}" 
         class="social-item social-{{feedPost.site}}"  

@@ -7,7 +7,7 @@ html
   height: 100%
 
 body
-  background: $color-bg
+  background: $color-lightest
   font-family: 'connectionsregular'
   font-size: 14px
   margin: 0
@@ -19,6 +19,22 @@ body
 h1, h2, h3, h4, h5
   font-weight: normal
   text-shadow: 0 -1px 0 rgba(0,0,0,0.08)
+
+#map-regions
+  display: inline-block
+  width: 100%
+  //padding: 0 0 5vh
+  height: 100vh
+  transition: transform ease $trans-speed $trans-speed / 4
+
+  &.zoomed
+    transform: scale(1.5,1.5) translateY(1em)
+
+#map-regions2
+  position: absolute
+  top: 5.275em
+  left: -4.25em
+  transform: scale(0.227, 0.227)
 
 .container-wrap
   display: block
@@ -33,42 +49,60 @@ h1, h2, h3, h4, h5
   width: 72.5%
   z-index: 0
   position: relative
-  // background: rgb(26,50,89)
-  // background: -webkit-radial-gradient(center, ellipse cover,  rgba(26,50,89,1) 0%,rgba(17,38,73,1) 90%)
-  // background: radial-gradient(ellipse at center,  rgba(26,50,89,1) 0%,rgba(17,38,73,1) 90%)
-  background: $color-lightest
 
   > h1
     margin: 0
-    padding: 0.5em 0.5em 0.5em 0.75em
-    color: $color-primary
+    padding: 0.33em 0.5em 0.33em 0.75em
+    color: $color-white
     position: absolute
     z-index: 2
     text-shadow: 0 1px 2px rgba(0,0,0,0.15)
     font-size: 2.25vw
+    background: $color-primary
+
+    &:after
+      content: ""
+      position: absolute
+      left: calc(100% - 0.25em)
+      border-top: 0.95em solid $color-primary
+      border-right: 0.95em solid transparent
+      border-bottom: 0.95em solid transparent
+      border-left: 0.95em solid $color-primary
+      transform: scaleX(0.75)
+      top: 0
 
   > h2
     position: absolute
-    bottom: 1em
+    bottom: 0
     right: 0
-    color: lighten($color-secondary, 5%)
+    color: $color-white
+    background: $color-secondary
     margin: 0
-    padding: 0.33em 1.5em 0.33em 0.5em
+    padding: 0.33em 1em 0.33em 0.5em
     z-index: 2
     text-shadow: 1px -1px 2px rgba(0,0,0,0.15)
     font-size: 1.75vw
 
-  // svg
-  //   margin-top: 4em
-  //   margin-bottom: -12em
+    &:after
+      content: ""
+      position: absolute
+      right: calc(100% - 0.25em)
+      border-top: 0.95em solid transparent
+      border-right: 0.95em solid $color-secondary
+      border-bottom: 0.95em solid $color-secondary
+      border-left: 0.95em solid transparent
+      transform: scaleX(0.75)
+      top: 0
+
+  // #map-container
   //   animation: map-zoomIn $animate-speed
   //   -webkit-animation: map-zoomIn $animate-speed
   //   -moz-animation: map-zoomIn $animate-speed
 
-  path#path171
-    animation: item-hit $animate-speed
-    -webkit-animation: item-hit $animate-speed
-    -moz-animation: item-hit $animate-speed
+  // path#path171
+  //   animation: item-hit $animate-speed
+  //   -webkit-animation: item-hit $animate-speed
+  //   -moz-animation: item-hit $animate-speed
 
   .map-pin
     position: absolute
@@ -80,9 +114,9 @@ h1, h2, h3, h4, h5
     bottom: 0
     font-size: 4em
     margin: auto
-    animation: pin-drop $animate-speed
-    -webkit-animation: pin-drop $animate-speed
-    -moz-animation: pin-drop $animate-speed
+    // animation: pin-drop $animate-speed
+    // -webkit-animation: pin-drop $animate-speed
+    // -moz-animation: pin-drop $animate-speed
 
     &:after
       position: absolute
@@ -102,83 +136,84 @@ h1, h2, h3, h4, h5
       position: relative
       z-index: 1
 
-#map-container, #map-container-usa
-  svg path
-    stroke: $color-lightest !important
-    fill: darken($color-light, 4%) !important
+    .map-pin-count
+      position: absolute
+      padding: 0.25em
+      top: 0.725em
+      left: 1.4em
+      border-radius: 50%
+      background: $color-white
+      font-size: 0.225em
+      z-index: 1
 
-#map-container
-  display: inline-block
-  height: 100vh
-  width: 100%
+      > p
+        padding: 0
+        margin: 0
+        color: $color-primary
 
-  .datamaps-subunit.USA
-    //display: none
+// #map-container, #map-container-usa
+//   svg path
+//     stroke: $color-lightest !important
+//     fill: darken($color-light, 4%) !important
 
-  svg path
-    &.CHN, &.BRA
-      fill: #011669 !important
+// #map-container
+//   display: inline-block
+//   height: 100vh
+//   width: 100%
+//   position: relative
 
-    &.AUS, &.SDN, &.ARG, &.DZA
-      fill: #0052c2 !important
 
-    &.CAN, &.SAU, &.IND, &.FRA
-      fill: #0073cf !important
+//   .datamaps-subunits
+//     position: relative
+//     display: block
 
-#map-container-usa
-  svg
-    position: absolute
-    height: 100vh
-    width: 100%
-    z-index: 4
-    top: 0
-    left: 0
-    transform: scale(0.21, 0.167) rotate(4deg)
-    left: -19.85vw
-    top: -4.5vh
-    overflow: visible !important
+//   .datamaps-subunit.USA
+//     //display: none
 
-    path
-      stroke-width: 2 !important
+//   svg path
+//     position: relative
 
-      &.AK
-        display: none
+//     &.CHN, &.BRA
+//       fill: #011669 !important
 
-      &.TX, &.CA, &.WY, &.NV
-        fill: #011669 !important
+//     &.AUS, &.SDN, &.ARG, &.DZA
+//       fill: #0052c2 !important
 
-      &.MA, &.VA, &.NC, &.ND, &.WI
-        fill: #0052c2 !important
+//     &.CAN, &.SAU, &.IND, &.FRA
+//       fill: #0073cf !important
 
-      &.SC, &.FL, &.KA, &.OK, &.IL, &.NM, &.AZ, &.ID
-        fill: #0073cf !important
 
-.map-search
-  position: absolute
-  bottom: 0
-  width: 100%
-  left: 0
-  background: $color-primary
-  box-shadow: 0 1px 2px rgba(0,0,0,0.15) inset
 
-  input
-    font-size: 2em
-    display: block
-    width: calc(100% - 2em)
-    margin: 1em
-    border-radius: $border-radius
-    border: 1px solid darken($color-primary, 15%)
-    padding: 0.5em 2.75em 0.5em 0.75em
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15)
-    color: $color-primary
-    font-family: 'Rubik'
+// #map-container-usa
+//   position: relative
 
-  .icon
-    position: absolute
-    right: 1.25em
-    top: 1.1em
-    color: $color-primary-dark
-    font-size: 2.67em
+//   svg
+//     position: absolute
+//     height: 100vh
+//     width: 100%
+//     z-index: 4
+//     top: 0
+//     left: 0
+//     transform: scale(0.217, 0.17) rotate(1deg)
+//     left: -15.4em
+//     top: -1.3em
+//     overflow: visible !important
+
+//     path
+//       stroke-width: 2 !important
+
+//       &.AK
+//         display: none
+      
+//       &.SC, &.FL, &.KA, &.OK, &.IL, &.NM, &.AZ, &.ID
+//         fill: #011669 !important
+
+//       &.MA, &.VA, &.NC, &.ND, &.WI
+//         fill: #0052c2 !important
+
+//       &.TX, &.CA, &.WY, &.NV
+//         fill: #0073cf !important
+
 
 .social-wrap
   height: 100%
@@ -188,7 +223,6 @@ h1, h2, h3, h4, h5
   top: 0
   z-index: 1
   box-shadow: -2px 0 4px rgba(0,0,0,0.25)
-  //background: url(/images/cream_pixels.png)
   background: $color-white
 
 .social-outer
@@ -296,7 +330,6 @@ h1, h2, h3, h4, h5
   .social-post
     float: left
     width: 100%
-    //margin: 0.75em 0 0.33em
 
     > p
       font-size: 1.05em

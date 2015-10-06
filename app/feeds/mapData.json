@@ -1,0 +1,38 @@
+[
+    {
+        "country": "BO",
+        "total": "4"
+    },
+    {
+        "country": "GB",
+        "total": "100"
+    },
+    {
+        "country": "IE",
+        "total": "25"
+    },
+    {
+        "country": "NP",
+        "total": "50"
+    },
+    {
+        "country": "US",
+        "total": "75"
+    },
+    {
+        "country": "BA",
+        "total": "10"
+    },
+    {
+        "country": "AU",
+        "total": "25"
+    },
+    {
+        "country": "US-AK",
+        "total": "12"
+    },
+    {
+        "country": "US-CA",
+        "total": "3"
+    }
+]

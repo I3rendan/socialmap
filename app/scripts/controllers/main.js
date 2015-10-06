@@ -124,31 +124,6 @@ angular.module('socialmapApp')
       }, $scope.delaySlide * 1.33);
     };
 
-    $scope.data = {
-      'GB': {metric: 4},
-      'US': {metric: 25},
-      'BR': {metric: 100},
-      'AR': {metric: 5},
-      'CN': {metric: 85},
-      'DE': {metric: 13},
-      'BE': {metric: 32},
-      'ES': {metric: 23},
-      'IR': {metric: 1},
-      'AF': {metric: 13},
-      'MR': {metric: 14},
-      'FR': {metric: 29},
-      'IN': {metric: 50},
-      'FI': {metric: 15},
-    };
-
-    // Map Stuff
-
-    $scope.mapPathData = window._mapPathData;
-
-    $scope.mapDataHumanizeFn = function(val) { return val + ' people'; };
-
-    $scope.heatmapColors = ['#857363','#d1c9c0','#f9f8f5'];
-
     // Google Charts
 
     $scope.chartObject = {};
