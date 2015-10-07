@@ -1,35 +1,35 @@
 [
     {
         "country": "BO",
-        "total": "4"
-    },
-    {
-        "country": "GB",
-        "total": "20"
-    },
-    {
-        "country": "IE",
         "total": "22"
     },
     {
-        "country": "NP",
-        "total": "20"
+        "country": "GB",
+        "total": "21"
     },
     {
-        "country": "US",
-        "total": "10"
+        "country": "IE",
+        "total": "18"
+    },
+    {
+        "country": "NP",
+        "total": "32"
     },
     {
         "country": "BA",
-        "total": "52"
+        "total": "21"
     },
     {
         "country": "AU",
-        "total": "26"
+        "total": "20"
     },
     {
         "country": "US-AK",
-        "total": "15"
+        "total": "21"
+    },
+    {
+        "country": "US-MD",
+        "total": "21"
     },
     {
         "country": "US-CA",

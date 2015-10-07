@@ -20,9 +20,28 @@ h1, h2, h3, h4, h5
   font-weight: normal
   text-shadow: 0 -1px 0 rgba(0,0,0,0.08)
 
-#map-container.zoomed
-  #map-regions, #map-regions-US
-    transform: scale(1.5,1.5) translateY(1em)
+#map-container
+  &.zoomed
+    #map-regions
+      transform: scale(1.5,1.5) translateY(1em)
+
+    #map-regions-US
+      opacity: 0 !important
+      z-index: -1
+
+    .map-pin
+      opacity: 1
+
+  &.usa
+    #map-regions
+      opacity: 0 !important
+
+    &.zoomed #map-regions-US
+      opacity: 1 !important
+      z-index: 1
+
+    svg
+      overflow: visible !important
 
 #map-regions
   display: inline-block
@@ -30,24 +49,16 @@ h1, h2, h3, h4, h5
   position: relative
   top: -2.5em
   height: 100vh
-  transition: transform ease $trans-speed $trans-speed / 4
-
-  svg
-    overflow: visible !important
+  transition: transform ease $trans-speed, opacity ease $trans-speed $trans-speed / 3
 
 #map-regions-US
   position: absolute
-  top: 1em
-  left: 0
-  width: 100%
-  height: 100%
-  opacity: 0
-  z-index: -1
+  top: 8.5%
+  left: -8.5%
+  transform: scale(0.227, 0.227) 
+  transition: transform ease $trans-speed, opacity ease $trans-speed $trans-speed / 3
 
-  svg
-    overflow: visible !important
-
-#map-regions2
+#map-regions-USsm
   position: absolute
   top: 5.275em
   left: -4.25em
@@ -132,7 +143,8 @@ h1, h2, h3, h4, h5
     font-size: 4em
     margin: auto
     opacity: 0
-    z-index: -1
+    z-index: 3
+    transition: opacity ease $trans-speed
     // animation: pin-drop $animate-speed
     // -webkit-animation: pin-drop $animate-speed
     // -moz-animation: pin-drop $animate-speed
