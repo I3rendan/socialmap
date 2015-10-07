@@ -20,15 +20,32 @@ h1, h2, h3, h4, h5
   font-weight: normal
   text-shadow: 0 -1px 0 rgba(0,0,0,0.08)
 
+#map-container.zoomed
+  #map-regions, #map-regions-US
+    transform: scale(1.5,1.5) translateY(1em)
+
 #map-regions
   display: inline-block
   width: 100%
-  //padding: 0 0 5vh
+  position: relative
+  top: -2.5em
   height: 100vh
   transition: transform ease $trans-speed $trans-speed / 4
 
-  &.zoomed
-    transform: scale(1.5,1.5) translateY(1em)
+  svg
+    overflow: visible !important
+
+#map-regions-US
+  position: absolute
+  top: 1em
+  left: 0
+  width: 100%
+  height: 100%
+  opacity: 0
+  z-index: -1
+
+  svg
+    overflow: visible !important
 
 #map-regions2
   position: absolute
@@ -114,6 +131,8 @@ h1, h2, h3, h4, h5
     bottom: 0
     font-size: 4em
     margin: auto
+    opacity: 0
+    z-index: -1
     // animation: pin-drop $animate-speed
     // -webkit-animation: pin-drop $animate-speed
     // -moz-animation: pin-drop $animate-speed
