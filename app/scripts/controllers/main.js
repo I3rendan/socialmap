@@ -110,7 +110,8 @@ angular.module('socialmapApp')
       height: '100%',
       chartArea: {
         top: 5,
-        height: '40%'
+        height: '60%',
+        width: '75%'
       },
       bar: {
         groupWidth: '33%'
