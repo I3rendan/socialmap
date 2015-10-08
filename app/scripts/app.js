@@ -6,7 +6,6 @@ angular
     'ngResource',
     'ngSanitize',
     'ngRoute',
-    'mappy',
     'googlechart'
   ])
   .config(function ($routeProvider) {

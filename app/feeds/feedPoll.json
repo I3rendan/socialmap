@@ -1,0 +1,46 @@
+[
+    {
+        "type": "poll",
+        "text": "Question One",
+        "answers": [
+            {
+                "text": "Chicago-Style",
+                "value": "8"
+            },
+            {
+                "text": "New York-Style",
+                "value": null
+            }
+        ]
+    },
+    {
+        "type": "gif",
+        "url": "http://www.sbviewer.com/assets/images/wall1.gif"
+    },
+    {
+        "type": "poll",
+        "text": "Question Two",
+        "answers": [
+            {
+                "text ": "Beautiful architecture",
+                "value": "5"
+            },
+            {
+                "text": "Delicious food",
+                "value": "3"
+            },
+            {
+                "text": "Lovely neighbors",
+                "value": "2"
+            },
+            {
+                "text": "Avid sports fans",
+                "value": 0
+            }
+        ]
+    },
+    {
+        "type": "gif",
+        "url": "http://www.sbviewer.com/assets/images/wall2.gif"
+    }
+]

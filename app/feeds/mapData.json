@@ -9,30 +9,54 @@
     },
     {
         "country": "IE",
-        "total": "18"
+        "total": "14"
     },
     {
         "country": "NP",
+        "total": "33"
+    },
+    {
+        "country": "CA",
         "total": "32"
     },
     {
         "country": "BA",
-        "total": "21"
+        "total": "26"
+    },
+    {
+        "country": "FR",
+        "total": "18"
+    },
+    {
+        "country": "BR",
+        "total": "75"
     },
     {
         "country": "AU",
-        "total": "20"
+        "total": "21"
     },
     {
         "country": "US-AK",
-        "total": "21"
+        "total": "22"
     },
     {
         "country": "US-MD",
-        "total": "21"
+        "total": "24"
+    },
+    {
+        "country": "US-ND",
+        "total": "41"
+    },
+    {
+        "country": "US-SD",
+        "total": "6"
     },
     {
         "country": "US-CA",
-        "total": "3"
+        "total": "33"
+    },
+    {
+        "country": "US-FL",
+        "total": "12"
     }
 ]

@@ -23,7 +23,7 @@ h1, h2, h3, h4, h5
 #map-container
   &.zoomed
     #map-regions
-      transform: scale(1.5,1.5) translateY(1em)
+      transform: scale(1.5,1.5) translateY(4em)
 
     #map-regions-US
       opacity: 0 !important
@@ -31,32 +31,37 @@ h1, h2, h3, h4, h5
 
     .map-pin
       opacity: 1
+      top: 0
 
   &.usa
     #map-regions
       opacity: 0 !important
 
+    #map-regions-US
+      left: 10.5%
+      top: 2.5%
+
     &.zoomed #map-regions-US
+      transform: scale(1.5,1.5)
       opacity: 1 !important
       z-index: 1
 
-    svg
-      overflow: visible !important
+  svg
+    overflow: visible !important
 
 #map-regions
   display: inline-block
   width: 100%
   position: relative
-  top: -2.5em
   height: 100vh
   transition: transform ease $trans-speed, opacity ease $trans-speed $trans-speed / 3
 
 #map-regions-US
   position: absolute
-  top: 8.5%
-  left: -8.5%
-  transform: scale(0.227, 0.227) 
-  transition: transform ease $trans-speed, opacity ease $trans-speed $trans-speed / 3
+  top: 21.5vh
+  left: 7.33vw
+  transform: scale(0.275, 0.275)
+  transition: all ease $trans-speed / 1.5
 
 #map-regions-USsm
   position: absolute
@@ -122,32 +127,19 @@ h1, h2, h3, h4, h5
       transform: scaleX(0.75)
       top: 0
 
-  // #map-container
-  //   animation: map-zoomIn $animate-speed
-  //   -webkit-animation: map-zoomIn $animate-speed
-  //   -moz-animation: map-zoomIn $animate-speed
-
-  // path#path171
-  //   animation: item-hit $animate-speed
-  //   -webkit-animation: item-hit $animate-speed
-  //   -moz-animation: item-hit $animate-speed
-
   .map-pin
     position: absolute
     height: 1em
     width: 1em
     left: 0
     right: 0
-    top: 0
+    top: -100vh
     bottom: 0
     font-size: 4em
     margin: auto
     opacity: 0
     z-index: 3
-    transition: opacity ease $trans-speed
-    // animation: pin-drop $animate-speed
-    // -webkit-animation: pin-drop $animate-speed
-    // -moz-animation: pin-drop $animate-speed
+    transition: opacity ease $trans-speed, top ease $trans-speed
 
     &:after
       position: absolute
@@ -176,75 +168,13 @@ h1, h2, h3, h4, h5
       background: $color-white
       font-size: 0.225em
       z-index: 1
+      width: 1.5em
+      text-align: center
 
       > p
         padding: 0
         margin: 0
         color: $color-primary
-
-// #map-container, #map-container-usa
-//   svg path
-//     stroke: $color-lightest !important
-//     fill: darken($color-light, 4%) !important
-
-// #map-container
-//   display: inline-block
-//   height: 100vh
-//   width: 100%
-//   position: relative
-
-
-//   .datamaps-subunits
-//     position: relative
-//     display: block
-
-//   .datamaps-subunit.USA
-//     //display: none
-
-//   svg path
-//     position: relative
-
-//     &.CHN, &.BRA
-//       fill: #011669 !important
-
-//     &.AUS, &.SDN, &.ARG, &.DZA
-//       fill: #0052c2 !important
-
-//     &.CAN, &.SAU, &.IND, &.FRA
-//       fill: #0073cf !important
-
-
-
-// #map-container-usa
-//   position: relative
-
-//   svg
-//     position: absolute
-//     height: 100vh
-//     width: 100%
-//     z-index: 4
-//     top: 0
-//     left: 0
-//     transform: scale(0.217, 0.17) rotate(1deg)
-//     left: -15.4em
-//     top: -1.3em
-//     overflow: visible !important
-
-//     path
-//       stroke-width: 2 !important
-
-//       &.AK
-//         display: none
-      
-//       &.SC, &.FL, &.KA, &.OK, &.IL, &.NM, &.AZ, &.ID
-//         fill: #011669 !important
-
-//       &.MA, &.VA, &.NC, &.ND, &.WI
-//         fill: #0052c2 !important
-
-//       &.TX, &.CA, &.WY, &.NV
-//         fill: #0073cf !important
-
 
 .social-wrap
   height: 100%
@@ -258,7 +188,7 @@ h1, h2, h3, h4, h5
 
 .social-outer
   top: 0
-  height: 67%
+  height: 60%
   box-shadow: 0 1px 2px rgba(0,0,0,0.15)
   overflow: hidden
   position: relative
@@ -377,20 +307,59 @@ h1, h2, h3, h4, h5
 
 .social-bottom
   bottom: 0
-  height: 33%
-  background: $color-lighter
+  height: 40%
+  background: darken($color-secondary, 8%)
+  position: relative
 
   > img
     width: 100%
   
   .google-chart
-    display: inline-block
+    display: block
     width: 100%
-    margin-top: -0.67em
-    margin-left: 0.67em
+    position: relative
+    overflow: hidden
+    margin-left: 0.25em
 
-    svg
+    div
+      max-height: 100%
+
+.poll-chart-wrap
+  background: $color-lightest
+  position: absolute
+  bottom: 0
+  width: calc(100% - 1em)
+  height: calc(100% - 2.25em)
+  margin: 0 0.5em
+
+.poll-item
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  opacity: 0
+  transition: opacity ease $trans-speed
+
+  &.active
+    opacity: 1
+
+  &.poll-gif
+    img
       width: 100%
-      height: 100%
-      display: inline-block
+      height: auto
+
+  &.poll-poll
+    h3
+      margin: 0.425em 0.67em
+      color: $color-white
+      font-weight: 600
+      font-size: 1.075em
+
+    .poll-question
+      color: $color-primary
+      margin: 0.25em 0.5em
+      font-size: 0.925em
+      font-weight: 600
+
 

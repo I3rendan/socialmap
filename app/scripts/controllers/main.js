@@ -15,6 +15,15 @@ angular.module('socialmapApp')
     };
   })
 
+  .directive('pollItemDir', function($timeout){
+    return {
+      restrict: 'A',
+      link: function($scope, element){
+
+      }
+    };
+  })
+
   .controller('MainCtrl', function ($scope, $http, $timeout, $window) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
@@ -26,7 +35,9 @@ angular.module('socialmapApp')
     $scope.delaySlide = 3600;
     $scope.animationSpeed = 1200;
     $scope.minPosts = 12;
+    $scope.pollCount = -1;
     $scope.feedPosts = [];
+    $scope.pollItems = [];
     $scope.feedPostsHeight = [];
 
     $scope.shuffleArray = function(array) {
@@ -40,14 +51,87 @@ angular.module('socialmapApp')
       return array;
     };
 
+
+
+    $scope.loadPolls = function() {
+      $http({method: 'GET', url: '/app/poll'}).
+        success(function(data) {
+          $scope.updatePolls(data);
+        }).
+        error(function(data, status) {
+          console.log(status + ' - Could not load posts');
+        });
+    };
+
+    $scope.updatePolls = function(data){
+      $scope.pollItems = data;
+      $scope.nextPoll();
+    };
+
+    $scope.rotatePoll = function(){
+      if ($scope.pollCount < $scope.pollItems.length - 1){
+        $timeout(function(){
+          $scope.nextPoll();
+        }, $scope.delaySlide * 10);
+      } else {
+        $scope.pollCount = -1;
+        $scope.loadPolls();
+      }
+    };
+
+    $scope.nextPoll = function(){
+      $scope.pollCount++;
+      if($scope.pollItems[$scope.pollCount].type === 'poll'){
+        $scope.chartObject.data = [
+         ['Text', 'Percent', { role: 'style' }, { role: 'annotation' }]
+        ];
+        _.each($scope.pollItems[$scope.pollCount].answers, function(item){
+
+          $scope.chartObject.data.push([String(item.text), Number(item.value), '#e31837', item.value]);
+        });
+      }
+
+      console.log($scope.pollCount + ' -- ' + $scope.pollItems.length);
+
+      $scope.rotatePoll();
+    };
+
+    // Google Charts
+
+    $scope.chartObject = {};
+    
+    $scope.chartObject.type = 'BarChart';
+    
+    $scope.chartObject.data = [];
+
+    $scope.chartObject.options = {
+      backgroundColor: 'transparent',
+      legend: 'none',
+      height: '100%',
+      chartArea: {
+        top: 5,
+        height: '40%'
+      },
+      bar: {
+        groupWidth: '33%'
+      },
+      animation: {
+        duration: 1500,
+        easing: 'inAndOut',
+        startup: true
+      }
+    };
+
+
+
     $scope.updatePosts = function(data){
       $scope.feedPostsHeight = [];
       $scope.feedPosts = data;
     };
 
     $scope.loadPosts = function() {
-      //$http({method: 'GET', url: '/feeds/feedSocial.json' + $scope.minPosts}).
-      $http({method: 'GET', url: '/feeds/feedSocial.json'}).
+      $http({method: 'GET', url: '/app/socialfeed/' + $scope.minPosts}).
+      //$http({method: 'GET', url: '/feeds/feedSocial.json'}).
         success(function(data) {
 
           if ($scope.postStatus === 'init') {
@@ -122,49 +206,6 @@ angular.module('socialmapApp')
       $timeout(function(){
         $scope.removePost();
       }, $scope.delaySlide * 1.33);
-    };
-
-    // Google Charts
-
-    $scope.chartObject = {};
-    
-    $scope.chartObject.type = 'BarChart';
-    
-    $scope.onions = [
-      {v: 'Facebook'},
-      {v: 3},
-    ];
-
-    $scope.chartObject.data = {'cols': [
-      {id: 't', label: 'Topping', type: 'string'},
-      {id: 's', label: 'Slices', type: 'number'}
-    ], 'rows': [
-        {c: $scope.onions},
-        {c: [
-            {v: 'Twitter'},
-            {v: 31}
-          ]},
-          {c: [
-              {v: 'Instagram'},
-              {v: 85},
-            ]},
-            {c: [
-                {v: 'Reddit'},
-                {v: 27},
-              ]}
-            ]};
-
-    $scope.chartObject.options = {
-      'legend': 'none',
-      'backgroundColor': 'transparent',
-      'height': '100%',
-      'width': '100%',
-      'colors': ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'],
-      'animation':{
-        'duration': 1500,
-        'easing': 'inAndOut',
-        'startup': true
-      }
     };
 
   });

@@ -46,9 +46,7 @@
       </div>
       <div class="social-wrap">
 
-        <!-- <div class="social-outer" ng-init="loadPosts()"> -->
-
-        <div class="social-outer">
+        <div class="social-outer" ng-init="loadPosts()">
 
           <div id="social{{$index}}" 
             class="social-item social-{{feedPost.site}}"  
@@ -74,11 +72,28 @@
 
         </div>
 
-        <div class="social-bottom">
+        <div class="social-bottom" ng-init="loadPolls()">
 
-          <!--  <img src="images/boa.gif"> -->
-          <img src="images/boa-2.jpg">
-          <!-- <div class="google-chart" google-chart chart="chartObject"></div> -->
+          <div id="poll{{$index}}"
+            class="poll-item poll-{{pollItem.type}}"
+            ng-class="{'active': pollCount === $index}"
+            ng-repeat="pollItem in pollItems" poll-item-dir>
+
+            <div ng-if="pollItem.type === 'gif'">
+              <img ng-src="{{pollItem.url}}">
+            </div>
+
+            <div ng-if="pollItem.type === 'poll'">
+              <h3>What do you think?</h3>
+              <div class="poll-chart-wrap">
+                <p class="poll-question">
+                  {{pollItem.text}}
+                </p>
+                <div class="google-chart" google-chart chart="chartObject"></div>
+              </div>
+            </div>
+
+          </div>
 
         </div>
 
@@ -106,6 +121,7 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-google-chart/ng-google-chart.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
@@ -121,14 +137,8 @@
     <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
     <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
     <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js"></script>
-    <!-- endbower -->
-
-    <script src="bower_components/angular-mappy/build/angular-mappy.js"></script>
-    <link rel="stylesheet" href="bower_components/angular-mappy/build/angular-mappy.css"/>
-    <script src="bower_components/angular-mappy/_mapdata.js"></script>
-    <script src="bower_components/angular-google-chart/ng-google-chart.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
-
+    <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -136,7 +146,7 @@
     <script src="scripts/controllers/main.js"></script>
     <!-- endbuild -->
 
-    <script type="text/javascript" src="scripts/jsapi.js"></script>
+    <script type="text/javascript" src="//www.google.com/jsapi"></script>
     <script type="text/javascript">
 
         var currData = [];
@@ -175,19 +185,10 @@
         var chartUS;
         var mapTimeout;
 
-
-
-
-
         var init = true;
         var isUS = false;
         var partyOn = false;
         var hasMulti = false;
-
-
-
-
-
 
         var animateSpeed = 500;
         var timeoutSpeed = 3000;
@@ -198,14 +199,10 @@
             chart = new google.visualization.GeoChart(document.getElementById('map-regions'));
             chart.draw(data, options);
 
-
             $('#map-regions').append('<div id="map-regions-US"></div>');
-
 
             chartUS = new google.visualization.GeoChart(document.getElementById('map-regions-US'));
             chartUS.draw(data, optionsUS);
-
-
 
             startMap();
         }
@@ -216,6 +213,10 @@
         }
 
         function restoreMap(){
+
+          // $('#map-regions-US').delay(timeoutSpeed).animate({
+          //   opacity: 0
+          // }, animateSpeed);
 
           $('#map-regions').delay(timeoutSpeed).animate({
             opacity: 0
@@ -229,24 +230,19 @@
             chartUS.draw(data, optionsUS);
 
             partyOn = false;
+            
             animateIn(false);
           });
         }
 
 
-
-
-
-
-
         function animateIn(isFirst){
 
+          
 
           if (hasMulti === true){
 
             console.log('milti');
-
-            
 
             if (regionNew.length > 1){
               partyOn = true;
@@ -256,10 +252,16 @@
               hasMulti = false;
             }
 
+            
+
+            $('#map-container').addClass('zoomed');
 
 
-            $('#map-container').removeClass('zoomed');
-            $('#map-regions').animate({
+            // $('#map-regions-US').delay(animateSpeed).animate({
+            //   opacity: 1
+            // }, animateSpeed);
+
+            $('#map-regions').delay(animateSpeed).animate({
               opacity: 1
             }, animateSpeed, function(){
               setTimeout(animateOut, timeoutSpeed / 2);
@@ -267,77 +269,86 @@
           }
           else if (isFirst === true && hasMulti === false){
 
-
             console.log('MIDDLE');
 
+            
 
-            $('#map-container').addClass('zoomed');
-            $('#map-regions').animate({
-              opacity: 1
+
+            
+
+
+            // $('#map-regions-US').delay(animateSpeed).animate({
+            //   opacity: 1
+            // }, animateSpeed);
+
+            $('#map-regions').delay(animateSpeed).animate({
+              opacity: 1,
+              fill: '#ffffff'
             }, animateSpeed, function(){
+
+
+              $('#map-container').addClass('zoomed');
+
+
               restoreMap();
             });
           } else {
 
-
             console.log('ELSE');
+
+            
 
 
             $('#map-container').removeClass('zoomed');
-            $('#map-regions').animate({
+
+
+
+
+            
+            $('#map-container').removeClass('usa');
+
+
+
+            // $('#map-regions-US').delay(animateSpeed).animate({
+            //   opacity: 1
+            // }, animateSpeed);
+
+            $('#map-regions').delay(animateSpeed).animate({
               opacity: 1
             }, animateSpeed, function(){
-              $('#map-container').removeClass('usa');
               startMap();
             });
           }
         }
 
-
-
-
-
-
-
-
         function animateOut(){
+
+          // $('#map-regions-US').animate({
+          //   opacity: 0
+          // }, animateSpeed);
+
           $('#map-regions').animate({
             opacity: 0
           }, animateSpeed, function(){
 
-
-            console.log('All Regions: ' + regionNew);
-            console.log('1111111 Region: ' + regionNew[0][0]);
-            
-
-
-
-            if (regionNew.length <= 1){
-              isMulti = false;
-              animateIn(true);
-            } else {
-
-              console.log('SHIIIIIIFT');
-              
-              regionNew.shift();
-              animateIn(false);
-            }
-
             data = google.visualization.arrayToDataTable(regionArray);
 
-            console.log('Region: ' + regionNew[0][0]);
+            $('.map-pin-count').html('<p>'+regionNew[0][1]+'</p>');
 
             if (regionNew[0][0].indexOf('US-') !== -1){
+
+
               isUS = true;
+
+
+
+
               $('#map-container').addClass('usa');
 
 
-              console.log('USA USA USA USA');
 
 
               var optionsSpecUS = {
-                region: regionNew[0][0],
-                resolution: 'provinces',
                 backgroundColor: 'transparent',
                 datalessRegionColor: '#d1c9c0',
                 colorAxis: {
@@ -346,16 +357,25 @@
                     maxValue: 100
                 },
                 sizeAxis: {minValue: 0, maxValue: 100},
-                legend: 'none'
+                legend: 'none',
+                region: regionNew[0][0],
+                resolution: 'provinces'
               }
 
-              chartUS = new google.visualization.GeoChart(document.getElementById('map-regions-US'));
+              chartUS = new google.visualization.GeoChart(document.getElementById('map-regions-US')); 
               chartUS.draw(data, optionsSpecUS);
 
-
             } else {
+
+
               isUS = false;
+
+
+
+
               $('#map-container').removeClass('usa');
+
+
 
 
               var optionsSpec = {
@@ -373,83 +393,92 @@
 
               chart = new google.visualization.GeoChart(document.getElementById('map-regions'));
               chart.draw(data, optionsSpec);
-
             }
 
-            
-
-            
-
-
-
-
-            
-            
-
-            
-
-            
-          
+            if (regionNew.length <= 1){
+              isMulti = false;
+              console.log('1');
+              animateIn(true);
+            } else {
+              regionNew.shift();
+              console.log('2');
+              animateIn(false);
+            }
 
           });
         }
 
+        var tempNewRegion;
+
         function drawMapData(){
-            $.ajax({
-                url: '/feeds/mapData.json', 
-                dataType: 'json',
-                cache: false
-            })
-            .success(function(data){
+          $.ajax({
+              url: '/app/allmapdata', 
+              dataType: 'json',
+              cache: false
+          })
+          .success(function(data){
 
-                prevData = currData;
-                currData = data;
-                regionNew = [];
-                regionArray = [['Country','Total']];
+              prevData = currData;
+              currData = data;
+              regionNew = [];
+              regionArray = [['Country','Total']];
 
-                _.each(data, function(item){
-                    _.each(prevData, function(prevItem){
-                        if (prevItem.country === item.country && prevItem.total !== item.total ){
-                            console.log('THIS IS DIFFERENT: ' + item.country);
-                            regionNew.push([item.country,item.total])
-                            partyOn = true;
-                        }
-                    });
-                    regionArray.push([item.country,Number(item.total)]);              
-                });
+              _.each(data, function(item){
+                
+                tempNewRegion = true;
 
-                if (regionNew.length > 1){
-                  hasMulti = true;
-                } else {
-                  hasMulti = false;
-                }
+                  _.each(prevData, function(prevItem){
+                      if (prevItem.country === item.country && prevItem.total !== item.total){
+                          regionNew.push([item.country,item.total]);
+                          partyOn = true;
+                      }
 
-                if (init === false && partyOn === true){
-                    clearTimeout(mapTimeout);
-                    animateOut();
-                } else if (init === false && partyOn === false){
-                    startMap();
-                } else if (init === true){
-                  data = google.visualization.arrayToDataTable(regionArray);
-                  chart = new google.visualization.GeoChart(document.getElementById('map-regions'));
-                  chart.draw(data, options);
+                      if (prevItem.country === item.country){
+                        tempNewRegion = false;
+                      }
 
-                  chartUS = new google.visualization.GeoChart(document.getElementById('map-regions-US'));
-                  chartUS.draw(data, optionsUS);
+                  });
 
-                  init = false;
+                  if (tempNewRegion === true && init === false){
+                    regionNew.push([item.country,item.total]);
+                    partyOn = true;
+                  }
+
+                  regionArray.push([item.country,Number(item.total)]);              
+              });
+
+              if (regionNew.length > 1){
+                hasMulti = true;
+              } else {
+                hasMulti = false;
+              }
+
+              if (init === false && partyOn === true){
+                  clearTimeout(mapTimeout);
+                  animateOut();
+              } else if (init === false && partyOn === false){
                   startMap();
-                }
-            })
-            .error(function(){
-                alert('Error loading JSON');
-                startMap();
-            });
-        }
+              } else if (init === true){
+                data = google.visualization.arrayToDataTable(regionArray);
+                chart = new google.visualization.GeoChart(document.getElementById('map-regions'));
+                chart.draw(data, options);
 
+                chartUS = new google.visualization.GeoChart(document.getElementById('map-regions-US'));
+                chartUS.draw(data, optionsUS);
+
+                init = false;
+                startMap();
+              }
+          })
+          .error(function(){
+              console.log('Error loading JSON');
+              startMap();
+          });
+      }
 
       google.load('visualization', '1', {packages:['geochart']});
       google.setOnLoadCallback(drawRegionsMap);
     </script>
+    
 </body>
 </html>
