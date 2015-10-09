@@ -310,7 +310,7 @@
               hasMulti = false;
             }
 
-            $('#map-inner').delay(animateSpeed).animate({
+            $('#map-inner').delay(animateSpeed / 3).animate({
               opacity: 1
             }, animateSpeed, function(){
               $('#wrap-explode').addClass('explode');
@@ -319,7 +319,7 @@
           }
           else if (isFirst === true && hasMulti === false){
 
-            $('#map-inner').delay(animateSpeed).animate({
+            $('#map-inner').delay(animateSpeed / 3).animate({
               opacity: 1,
               fill: '#ffffff'
             }, animateSpeed, function(){
@@ -331,7 +331,7 @@
             $('#map-container').removeClass('zoomed');
             $('#map-container').removeClass('usa');
 
-            $('#map-inner').delay(animateSpeed).animate({
+            $('#map-inner').delay(animateSpeed / 3).animate({
               opacity: 1
             }, animateSpeed, function(){
               startMap();
@@ -679,6 +679,12 @@
 
               isUS = true;
 
+              if (regionNew[0][0].indexOf('UX-AK') !== -1){
+                $('#map-regions-US svg g[clip-path] > g g:nth-child(2)').css('display','block');
+              } else {
+                $('#map-regions-US svg g[clip-path] > g g:nth-child(2)').css('display','none');
+              }
+
               var tempState = regionNew[0][0].replace('US-','');
               $('.region-name').html(getStateName(tempState));
               $('#map-container').addClass('usa');
@@ -706,6 +712,8 @@
             } else {
 
               isUS = false;
+
+              $('#map-regions-US svg g[clip-path] > g g:nth-child(2)').css('display','none');
 
               $('.region-name').html(getCountryName(regionNew[0][0]));
               $('#map-container').removeClass('usa');

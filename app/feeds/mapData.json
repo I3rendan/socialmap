@@ -37,15 +37,19 @@
     },
     {
         "country": "US-AK",
+        "total": "30"
+    },
+    {
+        "country": "US-TX",
         "total": "28"
     },
     {
         "country": "US-MD",
-        "total": "36"
+        "total": "1200"
     },
     {
         "country": "US-ND",
-        "total": "52"
+        "total": "55"
     },
     {
         "country": "US-SD",
