@@ -21,39 +21,43 @@
     },
     {
         "country": "BA",
-        "total": "28"
+        "total": "32"
     },
     {
         "country": "FR",
-        "total": "32"
+        "total": "100"
     },
     {
         "country": "BR",
-        "total": "72"
+        "total": "74"
     },
     {
         "country": "AU",
-        "total": "21"
+        "total": "25"
     },
     {
         "country": "US-AK",
-        "total": "24"
+        "total": "28"
     },
     {
         "country": "US-MD",
-        "total": "32"
+        "total": "36"
     },
     {
         "country": "US-ND",
-        "total": "48"
+        "total": "52"
     },
     {
         "country": "US-SD",
-        "total": "62"
+        "total": "64"
     },
     {
         "country": "US-CA",
-        "total": "32"
+        "total": "31"
+    },
+    {
+        "country": "US-RI",
+        "total": "2"
     },
     {
         "country": "US-FL",

@@ -1,0 +1,1225 @@
+#wrap-explode {
+  width: 500px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 100%;
+  position: absolute;
+  margin: auto;
+  z-index: 1;
+  top: -100em;
+  opacity: 0;
+}
+
+#wrap-explode.explode {
+  opacity: 1;
+  top: 1.33em;
+}
+
+div.box {
+  width: 8px;
+  height: 8px;
+  filter: blur(4px);
+  border-radius: 50%;
+  position: absolute;
+}
+
+@keyframes anim-1 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 220px;
+    left: 187px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(1) {
+  left: 10px;
+  animation-duration: 2.6s;
+  animation-name: anim-1;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-2 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 198px;
+    left: 146px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(2) {
+  left: 20px;
+  animation-duration: 2.6s;
+  animation-name: anim-2;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-3 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 329px;
+    left: 62px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(3) {
+  left: 30px;
+  animation-duration: 2.6s;
+  animation-name: anim-3;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-4 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 405px;
+    left: 64px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(4) {
+  left: 40px;
+  animation-duration: 2.6s;
+  animation-name: anim-4;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-5 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 61px;
+    left: 187px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(5) {
+  left: 50px;
+  animation-duration: 2.6s;
+  animation-name: anim-5;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-6 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 170px;
+    left: 213px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(6) {
+  left: 60px;
+  animation-duration: 2.6s;
+  animation-name: anim-6;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-7 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 449px;
+    left: 105px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(7) {
+  left: 70px;
+  animation-duration: 2.6s;
+  animation-name: anim-7;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-8 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 266px;
+    left: 125px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(8) {
+  left: 80px;
+  animation-duration: 2.6s;
+  animation-name: anim-8;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-9 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 426px;
+    left: 169px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(9) {
+  left: 90px;
+  animation-duration: 2.6s;
+  animation-name: anim-9;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-10 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 499px;
+    left: 367px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(10) {
+  left: 100px;
+  animation-duration: 2.6s;
+  animation-name: anim-10;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-11 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 263px;
+    left: 390px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(11) {
+  left: 110px;
+  animation-duration: 2.6s;
+  animation-name: anim-11;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-12 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 234px;
+    left: 255px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(12) {
+  left: 120px;
+  animation-duration: 2.6s;
+  animation-name: anim-12;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-13 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 491px;
+    left: 55px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(13) {
+  left: 130px;
+  animation-duration: 2.6s;
+  animation-name: anim-13;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-14 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 461px;
+    left: 479px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(14) {
+  left: 140px;
+  animation-duration: 2.6s;
+  animation-name: anim-14;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-15 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 180px;
+    left: 88px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(15) {
+  left: 150px;
+  animation-duration: 2.6s;
+  animation-name: anim-15;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-16 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 215px;
+    left: 270px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(16) {
+  left: 160px;
+  animation-duration: 2.6s;
+  animation-name: anim-16;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-17 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 486px;
+    left: 295px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(17) {
+  left: 170px;
+  animation-duration: 2.6s;
+  animation-name: anim-17;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-18 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 451px;
+    left: 391px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(18) {
+  left: 180px;
+  animation-duration: 2.6s;
+  animation-name: anim-18;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-19 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 291px;
+    left: 436px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(19) {
+  left: 190px;
+  animation-duration: 2.6s;
+  animation-name: anim-19;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-20 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 248px;
+    left: 351px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(20) {
+  left: 200px;
+  animation-duration: 2.6s;
+  animation-name: anim-20;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-21 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 156px;
+    left: 488px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(21) {
+  left: 210px;
+  animation-duration: 2.6s;
+  animation-name: anim-21;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-22 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 253px;
+    left: 324px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(22) {
+  left: 220px;
+  animation-duration: 2.6s;
+  animation-name: anim-22;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-23 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 290px;
+    left: 413px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(23) {
+  left: 230px;
+  animation-duration: 2.6s;
+  animation-name: anim-23;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-24 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 261px;
+    left: 26px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(24) {
+  left: 240px;
+  animation-duration: 2.6s;
+  animation-name: anim-24;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-25 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 431px;
+    left: 113px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(25) {
+  left: 250px;
+  animation-duration: 2.6s;
+  animation-name: anim-25;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-26 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 105px;
+    left: 114px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(26) {
+  left: 260px;
+  animation-duration: 2.6s;
+  animation-name: anim-26;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-27 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 264px;
+    left: 119px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(27) {
+  left: 270px;
+  animation-duration: 2.6s;
+  animation-name: anim-27;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-28 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 458px;
+    left: 481px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(28) {
+  left: 280px;
+  animation-duration: 2.6s;
+  animation-name: anim-28;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-29 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 330px;
+    left: 319px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(29) {
+  left: 290px;
+  animation-duration: 2.6s;
+  animation-name: anim-29;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-30 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 138px;
+    left: 403px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(30) {
+  left: 300px;
+  animation-duration: 2.6s;
+  animation-name: anim-30;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-31 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 447px;
+    left: 10px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(31) {
+  left: 310px;
+  animation-duration: 2.6s;
+  animation-name: anim-31;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-32 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 176px;
+    left: 148px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(32) {
+  left: 320px;
+  animation-duration: 2.6s;
+  animation-name: anim-32;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-33 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 83px;
+    left: 160px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(33) {
+  left: 330px;
+  animation-duration: 2.6s;
+  animation-name: anim-33;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-34 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 236px;
+    left: 81px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(34) {
+  left: 340px;
+  animation-duration: 2.6s;
+  animation-name: anim-34;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-35 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 103px;
+    left: 143px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(35) {
+  left: 350px;
+  animation-duration: 2.6s;
+  animation-name: anim-35;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-36 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 451px;
+    left: 139px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(36) {
+  left: 360px;
+  animation-duration: 2.6s;
+  animation-name: anim-36;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-37 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 400px;
+    left: 159px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(37) {
+  left: 370px;
+  animation-duration: 2.6s;
+  animation-name: anim-37;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-38 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 125px;
+    left: 402px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(38) {
+  left: 380px;
+  animation-duration: 2.6s;
+  animation-name: anim-38;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-39 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 104px;
+    left: 34px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(39) {
+  left: 390px;
+  animation-duration: 2.6s;
+  animation-name: anim-39;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-40 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 258px;
+    left: 464px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(40) {
+  left: 400px;
+  animation-duration: 2.6s;
+  animation-name: anim-40;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-41 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 310px;
+    left: 70px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(41) {
+  left: 410px;
+  animation-duration: 2.6s;
+  animation-name: anim-41;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-42 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 7px;
+    left: 382px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(42) {
+  left: 420px;
+  animation-duration: 2.6s;
+  animation-name: anim-42;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-43 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 62px;
+    left: 463px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(43) {
+  left: 430px;
+  animation-duration: 2.6s;
+  animation-name: anim-43;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-44 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 497px;
+    left: 23px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(44) {
+  left: 440px;
+  animation-duration: 2.6s;
+  animation-name: anim-44;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-45 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 366px;
+    left: 328px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(45) {
+  left: 450px;
+  animation-duration: 2.6s;
+  animation-name: anim-45;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-46 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 128px;
+    left: 218px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(46) {
+  left: 460px;
+  animation-duration: 2.6s;
+  animation-name: anim-46;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-47 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 16px;
+    left: 215px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(47) {
+  left: 470px;
+  animation-duration: 2.6s;
+  animation-name: anim-47;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-48 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 164px;
+    left: 207px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(48) {
+  left: 480px;
+  animation-duration: 2.6s;
+  animation-name: anim-48;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-49 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 35px;
+    left: 117px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(49) {
+  left: 490px;
+  animation-duration: 2.6s;
+  animation-name: anim-49;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}
+
+@keyframes anim-50 {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  50% {
+    top: 476px;
+    left: 158px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+.explode div.box:nth-child(50) {
+  left: 500px;
+  animation-duration: 2.6s;
+  animation-name: anim-50;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  background: #fffabd;
+}

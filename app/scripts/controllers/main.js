@@ -51,8 +51,6 @@ angular.module('socialmapApp')
       return array;
     };
 
-
-
     $scope.loadPolls = function() {
       $http({method: 'GET', url: '/app/poll'}).
         success(function(data) {
@@ -123,8 +121,6 @@ angular.module('socialmapApp')
       }
     };
 
-
-
     $scope.updatePosts = function(data){
       $scope.feedPostsHeight = [];
       $scope.feedPosts = data;
@@ -132,7 +128,6 @@ angular.module('socialmapApp')
 
     $scope.loadPosts = function() {
       $http({method: 'GET', url: '/app/socialfeed/' + $scope.minPosts}).
-      //$http({method: 'GET', url: '/feeds/feedSocial.json'}).
         success(function(data) {
 
           if ($scope.postStatus === 'init') {

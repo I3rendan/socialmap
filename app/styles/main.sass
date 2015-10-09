@@ -1,6 +1,7 @@
 @import fonts
 @import variables
 @import icons
+@import explode
 @import animations
 
 html
@@ -23,22 +24,30 @@ h1, h2, h3, h4, h5
 #map-container
   display: block
 
-  &.zoomedPre 
-    #map-inner
-      transform: scale(1.10,1.10)
-
   &.zoomed 
     #map-inner
-      transform: scale(1.5,1.5)
+      transform: scale(1.5,1.5) translateY(2.5em)
 
     #map-regions-US
       left: -100vw
 
     .map-pin
-      opacity: 1
       top: 0
 
+    .map-pin-shadow
+      top: 0.8em
+      left: 0.175em
+      filter: blur(1px)
+      opacity: 1
+
+    .map-region-name
+      top: 15em
+      opacity: 1
+
   &.usa
+    #map-inner
+      transform: scale(1.05,1.05) translateY(2.5em)
+
     #map-regions
       left: -100vw
 
@@ -49,6 +58,21 @@ h1, h2, h3, h4, h5
         transform: scale(1,1)
         left: 0
         top: 0
+
+  &.zoomedPre 
+    #map-inner
+      transform: scale(1.10,1.10)
+
+    .map-pin
+      top: -110vh
+
+    .map-pin-shadow
+      top: 50vh
+      opacity: 0
+
+    .map-region-name
+      top: 100vh
+      opacity: 0
 
   svg
     overflow: visible !important
@@ -140,6 +164,36 @@ h1, h2, h3, h4, h5
 
   .map-region-name
     position: absolute
+    height: 3.5em
+    width: 100%
+    text-align: center
+    top: 100vh
+    right: 0
+    bottom: 0
+    left: 0
+    margin: auto
+    opacity: 0
+    transition: all ease $trans-speed
+
+    > p
+      margin: 0
+      padding: 0.5em 1em 0.5em 0.33em
+      font-size: 1.5em
+      background: $color-primary
+      color: $color-white
+      border-radius: 1.25em
+      box-shadow: 0 3px 6px rgba(0,0,0,0.25)
+      display: inline-block
+
+      .icon
+        background: $color-white
+        color: $color-primary
+        font-size: 1.15em
+        padding: 0.25em
+        border-radius: 50%
+        margin-right: 0.5em
+        position: relative
+        top: 0.075em
 
   .map-pin
     position: absolute
@@ -147,26 +201,27 @@ h1, h2, h3, h4, h5
     width: 1em
     left: 0
     right: 0
-    top: -100vh
+    top: -110vh
     bottom: 0
-    font-size: 4em
+    font-size: 5.5em
     margin: auto
-    opacity: 0
     z-index: 3
     transition: opacity ease $trans-speed, top ease $trans-speed
 
-    &:after
+    .map-pin-shadow
       position: absolute
       top: 100%
       background: rgba(0,0,0,0.33)
       height: 0.25em
       width: 0.67em
       border-radius: 50%
-      top: 0.8em
-      left: 0.175em
+      top: 50vh
+      left: 0
+      filter: blur(6px)
       content: ""
       z-index: 0
-      filter: blur(1px)
+      transition: all ease $trans-speed
+      opacity: 0
 
     .icon
       color: $color-primary
@@ -271,7 +326,7 @@ h1, h2, h3, h4, h5
     padding: 1.5em
     margin: 0.25em 0
     width: 100%
-    font-size: 0.925em
+    font-size: 1em
 
   .social-img
     width: 3em
@@ -339,12 +394,12 @@ h1, h2, h3, h4, h5
       max-height: 100%
 
 .poll-chart-wrap
-  background: $color-lightest
   position: absolute
   bottom: 0
   width: calc(100% - 1em)
   height: calc(100% - 2.25em)
   margin: 0 0.5em
+  background: url('../images/pollBG.jpg') $color-white no-repeat 98% 98%
 
 .poll-item
   position: absolute
