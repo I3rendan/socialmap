@@ -21,13 +21,18 @@ h1, h2, h3, h4, h5
   text-shadow: 0 -1px 0 rgba(0,0,0,0.08)
 
 #map-container
-  &.zoomed
-    #map-regions
-      transform: scale(1.5,1.5) translateY(4em)
+  display: block
+
+  &.zoomedPre 
+    #map-inner
+      transform: scale(1.10,1.10)
+
+  &.zoomed 
+    #map-inner
+      transform: scale(1.5,1.5)
 
     #map-regions-US
-      opacity: 0 !important
-      z-index: -1
+      left: -100vw
 
     .map-pin
       opacity: 1
@@ -35,39 +40,45 @@ h1, h2, h3, h4, h5
 
   &.usa
     #map-regions
-      opacity: 0 !important
+      left: -100vw
 
     #map-regions-US
-      left: 10.5%
-      top: 2.5%
+      left: 0
 
-    &.zoomed #map-regions-US
-      transform: scale(1.5,1.5)
-      opacity: 1 !important
-      z-index: 1
+      svg
+        transform: scale(1,1)
+        left: 0
+        top: 0
 
   svg
     overflow: visible !important
 
+#map-inner
+  display: block
+  transition: transform ease $trans-speed
+
 #map-regions
-  display: inline-block
-  width: 100%
+  display: block
+  width: 72.5vw
   position: relative
   height: 100vh
-  transition: transform ease $trans-speed, opacity ease $trans-speed $trans-speed / 3
+  left: 0
 
 #map-regions-US
   position: absolute
-  top: 21.5vh
-  left: 7.33vw
-  transform: scale(0.275, 0.275)
-  transition: all ease $trans-speed / 1.5
+  display: block
+  top: 0
+  left: 0
+  width: 72.5vw
+  height: 100vh
+  transition: transform ease $trans-speed
 
-#map-regions-USsm
-  position: absolute
-  top: 5.275em
-  left: -4.25em
-  transform: scale(0.227, 0.227)
+  svg
+    display: inline-block
+    transform: scale(0.18, 0.18)
+    top: 3.33%
+    left: -25.5%
+    position: relative
 
 .container-wrap
   display: block
@@ -126,6 +137,9 @@ h1, h2, h3, h4, h5
       border-left: 0.95em solid transparent
       transform: scaleX(0.75)
       top: 0
+
+  .map-region-name
+    position: absolute
 
   .map-pin
     position: absolute
