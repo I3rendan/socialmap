@@ -663,6 +663,13 @@
             }
         }
 
+        function commaSeparateNumber(val){
+          while (/(\d+)(\d{3})/.test(val.toString())){
+            val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+          }
+          return val;
+        }
+
         function animateOut(){
 
           $('#wrap-explode').removeClass('explode');
@@ -673,16 +680,23 @@
 
             data = google.visualization.arrayToDataTable(regionArray);
             
-            $('.map-pin-count').html('<p>'+regionNew[0][1]+'</p>');
+            var tempCount = commaSeparateNumber(regionNew[0][1]);
+            $('.map-pin-count').html('<p>'+tempCount+'</p>');
 
             if (regionNew[0][0].indexOf('US-') !== -1){
 
               isUS = true;
 
-              if (regionNew[0][0].indexOf('UX-AK') !== -1){
+              if (regionNew[0][0].indexOf('US-AK') !== -1){
                 $('#map-regions-US svg g[clip-path] > g g:nth-child(2)').css('display','block');
               } else {
                 $('#map-regions-US svg g[clip-path] > g g:nth-child(2)').css('display','none');
+              }
+
+              if (regionNew[0][0].indexOf('US-HI') !== -1){
+                $('#map-regions-US svg g[clip-path] > g g:nth-child(3)').css('display','block');
+              } else {
+                $('#map-regions-US svg g[clip-path] > g g:nth-child(3)').css('display','none');
               }
 
               var tempState = regionNew[0][0].replace('US-','');
@@ -714,6 +728,7 @@
               isUS = false;
 
               $('#map-regions-US svg g[clip-path] > g g:nth-child(2)').css('display','none');
+              $('#map-regions-US svg g[clip-path] > g g:nth-child(3)').css('display','none');
 
               $('.region-name').html(getCountryName(regionNew[0][0]));
               $('#map-container').removeClass('usa');
@@ -754,6 +769,7 @@
         function drawMapData(){
           $.ajax({
               url: '/app/allmapdata', 
+              //url: '/feeds/mapData.json', 
               dataType: 'json',
               cache: false
           })

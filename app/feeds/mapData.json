@@ -25,7 +25,11 @@
     },
     {
         "country": "FR",
-        "total": "100"
+        "total": "10021"
+    },
+    {
+        "country": "US-HI",
+        "total": "20"
     },
     {
         "country": "BR",
@@ -37,11 +41,11 @@
     },
     {
         "country": "US-AK",
-        "total": "30"
+        "total": "33"
     },
     {
         "country": "US-TX",
-        "total": "28"
+        "total": "32"
     },
     {
         "country": "US-MD",
